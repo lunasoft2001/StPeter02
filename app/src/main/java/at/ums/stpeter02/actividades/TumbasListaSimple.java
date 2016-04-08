@@ -1,11 +1,8 @@
 package at.ums.stpeter02.actividades;
 
 import android.app.ListActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
-
 import java.util.List;
 
 import at.ums.stpeter02.R;
