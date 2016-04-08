@@ -15,7 +15,9 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".actividad1">
+        <activity android:name=".actividades.TumbasFormulario">
+        </activity>
+        <activity android:name=".actividades.TumbasListaSimple">
         </activity>
     </application>
 

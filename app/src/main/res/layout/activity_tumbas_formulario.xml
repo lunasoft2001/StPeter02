@@ -8,17 +8,17 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".actividad1">
+    tools:context=".actividades.TumbasFormulario">
 
     <TextView
         android:id="@+id/tvIdTrabajoCabecera"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Id Tumba"
+        android:text="Codigo Tumba"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
-        android:id="@+id/etIdTrabajoCabecera"
+        android:id="@+id/etCodTumba"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -30,12 +30,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/etIdTrabajoCabecera"
+        android:layout_below="@+id/etCodTumba"
         android:text="Nombre"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
-        android:id="@+id/etDescripcionTrabajoCabecera"
+        android:id="@+id/etNombreTumba"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -47,7 +47,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/etDescripcionTrabajoCabecera"
+        android:layout_below="@+id/etNombreTumba"
         android:text="Cementerio"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -164,37 +164,20 @@
 
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Actividad 1"
-        android:id="@+id/textView"
-        android:layout_above="@+id/buttonIngresar"
-        android:layout_centerHorizontal="true"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ingresar valor"
-        android:id="@+id/buttonIngresar"
-        android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/tvFecha"/>
-
-    <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ID"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_alignBottom="@+id/botonera_tumbas"
-        />
+        android:layout_below="@+id/botonera_tumbas"
+        android:layout_alignParentStart="true"/>
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/etIdTumba"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:layout_alignBottom="@+id/textView2"
-        android:layout_toStartOf="@+id/textView2"/>
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentStart="true"/>
 
 </RelativeLayout>

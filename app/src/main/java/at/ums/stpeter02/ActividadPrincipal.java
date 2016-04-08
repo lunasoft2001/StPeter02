@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import at.ums.stpeter02.actividades.TumbasFormulario;
+import at.ums.stpeter02.actividades.TumbasListaSimple;
 import at.ums.stpeter02.sqlite.DataSource;
 
 public class ActividadPrincipal extends AppCompatActivity {
@@ -20,6 +22,7 @@ public class ActividadPrincipal extends AppCompatActivity {
 
         //Codigo para iniciar la Db
         mDataSource = new DataSource(this);
+
     }
 
 
@@ -44,12 +47,17 @@ public class ActividadPrincipal extends AppCompatActivity {
      *
      */
 
-    public void boton1(View v){
-        Intent intento = new Intent(this, actividad1.class);
+    public void botonListaTumbas(View v){
+        Intent intento = new Intent(this, TumbasListaSimple.class);
         startActivity(intento);
 
     }
 
+    public void botonAccion2(View v){
+        Intent intento = new Intent(this, TumbasFormulario.class);
+        startActivity(intento);
+
+    }
 
 
 }

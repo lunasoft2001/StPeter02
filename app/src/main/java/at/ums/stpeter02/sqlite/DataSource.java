@@ -33,22 +33,5 @@ public class DataSource {
         ayudaDb.close();
     }
 
-    public Tumbas crear(Tumbas tumbas){
-
-        ContentValues valores = new ContentValues();
-
-        valores.put(DbHelper.ColumnasTumbas.ID, tumbas.getID());
-        valores.put(DbHelper.ColumnasTumbas.COD_TUMBA, tumbas.getCOD_TUMBA());
-        valores.put(DbHelper.ColumnasTumbas.NOMBRE, tumbas.getNOMBRE());
-        valores.put(DbHelper.ColumnasTumbas.CEMENTERIO, tumbas.getCEMENTERIO());
-        valores.put(DbHelper.ColumnasTumbas.CAMPO, tumbas.getCAMPO());
-        valores.put(DbHelper.ColumnasTumbas.FILA, tumbas.getFILA());
-        valores.put(DbHelper.ColumnasTumbas.NUMERO, tumbas.getNUMERO());
-
-        long idInsertado = db.insert(DbHelper.Tablas.TUMBAS, null, valores);
-        tumbas.setID(idInsertado);
-
-        return tumbas;
-    }
 
 }
