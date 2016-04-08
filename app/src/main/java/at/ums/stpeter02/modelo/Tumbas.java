@@ -69,7 +69,8 @@ public class Tumbas {
         this.NUMERO = NUMERO;
     }
 
-
-
-
+    @Override
+    public String toString() {
+        return COD_TUMBA + "\n" + NOMBRE;
+    }
 }
