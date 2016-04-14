@@ -19,6 +19,8 @@
         </activity>
         <activity android:name=".actividades.TumbasListaSimple">
         </activity>
+        <activity android:name=".actividades.Oliver">
+        </activity>
     </application>
 
 </manifest>

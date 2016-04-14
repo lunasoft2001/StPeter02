@@ -17,7 +17,7 @@ public class DbHelper extends SQLiteAssetHelper {
     /**
      * Interface de las tablas para facilitar su entrada
      */
-    interface Tablas{
+    public interface Tablas{
         String TUMBAS = "tumbas";
         String TRABAJO_CABECERA = "trabajo_cabecera";
     }
@@ -26,7 +26,7 @@ public class DbHelper extends SQLiteAssetHelper {
      * Interface de las columnas para facilitar su entrada
      */
 
-    interface ColumnasTumbas{
+    public interface ColumnasTumbas{
         String ID = "_id";
         String COD_TUMBA = "tum_IdGrab";
         String NOMBRE = "tum_nombre";

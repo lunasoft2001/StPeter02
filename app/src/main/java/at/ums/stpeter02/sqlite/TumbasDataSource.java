@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.support.annotation.NonNull;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -67,13 +68,53 @@ public class TumbasDataSource {
         return tumbas;
     }
 
-    public List<Tumbas> verListadoTumbas() {
+    public List<Tumbas> verListadoTumbasFiltrado(String filtrado, String ordenado) {
+
+        Cursor cursor = db.query(DbHelper.Tablas.TUMBAS, todasColumnasTumbas, filtrado, null, null, null, ordenado);
+        Log.i(LOGTAG, " Contiene: " + cursor.getCount() + " Filas ");
+        List<Tumbas> listaTumbas = CursorALista(cursor);
+        return listaTumbas;
+    }
+
+    public List<Tumbas> verIdMaximo(){
+        Cursor cursor = db.rawQuery("SELECT Max(_id) As _id, tum_IdGrab, tum_nombre From Tumbas",null);
+
         List<Tumbas> listaTumbas = new ArrayList<Tumbas>();
+        while (cursor.moveToNext()) {
+            Tumbas tumbas = new Tumbas();
+            tumbas.setID(cursor.getLong(cursor.getColumnIndex(DbHelper.ColumnasTumbas.ID)));
+            tumbas.setCOD_TUMBA(cursor.getString(cursor.getColumnIndex(DbHelper.ColumnasTumbas.COD_TUMBA)));
+            tumbas.setNOMBRE(cursor.getString(cursor.getColumnIndex(DbHelper.ColumnasTumbas.NOMBRE)));
+            listaTumbas.add(tumbas);
+        }
+
+
+        return listaTumbas;
+    }
+
+
+
+
+
+    public List<Tumbas> verListadoTumbas() {
+
 
         Cursor cursor = db.query(DbHelper.Tablas.TUMBAS, todasColumnasTumbas, null, null, null, null, null);
-
         Log.i(LOGTAG, " Contiene: " + cursor.getCount() + " Filas ");
+        List<Tumbas> listaTumbas = CursorALista(cursor);
+        return listaTumbas;
+    }
 
+
+
+
+
+
+
+    //Es un metodo extraido de verListadoTumbas que se repite en cada método de query
+    @NonNull
+    private List<Tumbas> CursorALista(Cursor cursor) {
+        List<Tumbas> listaTumbas = new ArrayList<Tumbas>();
         while (cursor.moveToNext()) {
             Tumbas tumbas = new Tumbas();
             tumbas.setID(cursor.getLong(cursor.getColumnIndex(DbHelper.ColumnasTumbas.ID)));
@@ -87,7 +128,6 @@ public class TumbasDataSource {
             listaTumbas.add(tumbas);
 
         }
-
         return listaTumbas;
     }
 

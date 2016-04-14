@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".actividades.TumbasFormulario">
+    tools:context=".actividades.Oliver">
 
     <TextView
         android:id="@+id/tvIdTrabajoCabeceraOli"
@@ -173,11 +173,56 @@
         android:layout_alignParentStart="true"/>
 
     <EditText
-        android:id="@+id/etIdTumba"
+        android:id="@+id/etIdTumbaOli"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:layout_below="@+id/textView2"
         android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:id="@+id/tvIdMaximo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="100"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_below="@+id/botonera_tumbasOli"
+        android:layout_toEndOf="@+id/textView2"/>
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Insertar"
+        android:id="@+id/btInsertar"
+        android:layout_below="@+id/etIdTumbaOli"
+        android:layout_alignParentStart="true"/>
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Actualizar"
+        android:id="@+id/btActualizar"
+        android:layout_alignBottom="@+id/btInsertar"
+        android:layout_toEndOf="@+id/tvFechaOli"/>
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Eliminar"
+        android:id="@+id/btEliminar"
+        android:layout_below="@+id/btInsertar"
+        android:layout_alignParentStart="true"/>
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Consultar"
+        android:id="@+id/btConsultar"
+        android:layout_alignBottom="@+id/btEliminar"
+        android:layout_alignStart="@+id/btActualizar"/>
 
 </RelativeLayout>

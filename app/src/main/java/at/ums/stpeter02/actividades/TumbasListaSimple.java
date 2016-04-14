@@ -2,6 +2,7 @@ package at.ums.stpeter02.actividades;
 
 import android.app.ListActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import java.util.List;
 
@@ -17,6 +18,7 @@ public class TumbasListaSimple extends ListActivity {
      */
 
     TumbasDataSource mTumbasDataSource;
+    private List<Tumbas> tumbas;
 
 
     @Override
@@ -28,12 +30,18 @@ public class TumbasListaSimple extends ListActivity {
         mTumbasDataSource.abrir();
 
 
-        List<Tumbas> tumbas = mTumbasDataSource.verListadoTumbas();
+        //tumbas = mTumbasDataSource.verListadoTumbas();
+        tumbas = mTumbasDataSource.verIdMaximo();
 
 
+
+        RefrescarPantalla();
+
+    }
+
+    public void RefrescarPantalla(){
         ArrayAdapter<Tumbas> adapter = new ArrayAdapter<Tumbas>(this, android.R.layout.simple_expandable_list_item_1, tumbas);
         setListAdapter(adapter);
-
     }
 
     @Override

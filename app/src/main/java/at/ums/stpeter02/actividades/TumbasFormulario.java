@@ -8,7 +8,6 @@ import android.widget.EditText;
 
 import at.ums.stpeter02.R;
 import at.ums.stpeter02.modelo.Tumbas;
-import at.ums.stpeter02.sqlite.DataSource;
 import at.ums.stpeter02.sqlite.TumbasDataSource;
 
 public class TumbasFormulario extends AppCompatActivity {
@@ -33,20 +32,20 @@ public class TumbasFormulario extends AppCompatActivity {
 
         // Asociamos los elementos de la vista a las variables
         id = (EditText) findViewById(R.id.etIdTumba);
-        cod_tumba = (EditText) findViewById(R.id.etCodTumba);
-        nombre = (EditText) findViewById(R.id.etNombreTumba);
-        cementerio = (EditText) findViewById(R.id.etCementerio);
-        campo = (EditText) findViewById(R.id.etCampo);
-        fila = (EditText) findViewById(R.id.etFila);
-        numero = (EditText) findViewById(R.id.etNumero);
+        cod_tumba = (EditText) findViewById(R.id.etCodTumbaOli);
+        nombre = (EditText) findViewById(R.id.etNombreTumbaOli);
+        cementerio = (EditText) findViewById(R.id.etCementerioOli);
+        campo = (EditText) findViewById(R.id.etCampoOli);
+        fila = (EditText) findViewById(R.id.etFilaOli);
+        numero = (EditText) findViewById(R.id.etNumeroOli);
 
         //Codigo para iniciar la Db
         mTumbasDataSource = new TumbasDataSource(this);
         mTumbasDataSource.abrir();
 
         //Codigo para el onClicklistener
-        findViewById(R.id.boton_cancelar).setOnClickListener(mGlobal_onClickListener);
-        findViewById(R.id.boton_guardar).setOnClickListener(mGlobal_onClickListener);
+        findViewById(R.id.boton_cancelarOli).setOnClickListener(mGlobal_onClickListener);
+        findViewById(R.id.boton_guardarOli).setOnClickListener(mGlobal_onClickListener);
 
 
     }
@@ -56,10 +55,10 @@ public class TumbasFormulario extends AppCompatActivity {
         @Override
         public void onClick(final View v) {
             switch (v.getId()) {
-                case R.id.boton_guardar:
+                case R.id.boton_guardarOli:
                     InsertarDatos();
                     break;
-                case R.id.boton_cancelar:
+                case R.id.boton_cancelarOli:
                     finish();
                     break;
             }
