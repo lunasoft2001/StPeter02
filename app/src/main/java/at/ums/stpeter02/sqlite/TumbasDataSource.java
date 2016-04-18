@@ -94,8 +94,6 @@ public class TumbasDataSource {
 
 
 
-
-
     public List<Tumbas> verListadoTumbas() {
 
 
@@ -104,12 +102,6 @@ public class TumbasDataSource {
         List<Tumbas> listaTumbas = CursorALista(cursor);
         return listaTumbas;
     }
-
-
-
-
-
-
 
     //Es un metodo extraido de verListadoTumbas que se repite en cada método de query
     @NonNull
@@ -131,5 +123,23 @@ public class TumbasDataSource {
         return listaTumbas;
     }
 
+
+
+    public Cursor recuperarRegistro(long id){
+
+        String condicion = DbHelper.ColumnasTumbas.ID + "=" + id;
+
+        Cursor cursor = db.query(DbHelper.Tablas.TUMBAS,todasColumnasTumbas, condicion,null,null,null,null, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+        }
+
+        Log.i(LOGTAG, " Contiene: " + cursor.getCount() + " Filas  --- Id num: " + id );
+
+
+
+        return cursor;
+
+    }
 
 }

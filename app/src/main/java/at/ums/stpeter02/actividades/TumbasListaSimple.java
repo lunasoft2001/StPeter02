@@ -1,14 +1,19 @@
 package at.ums.stpeter02.actividades;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
 import java.util.List;
 
 import at.ums.stpeter02.R;
 import at.ums.stpeter02.modelo.Tumbas;
 import at.ums.stpeter02.sqlite.DataSource;
+import at.ums.stpeter02.sqlite.DbHelper;
 import at.ums.stpeter02.sqlite.TumbasDataSource;
 
 public class TumbasListaSimple extends ListActivity {
@@ -17,6 +22,7 @@ public class TumbasListaSimple extends ListActivity {
      * Definición de Variables
      */
 
+    public static final String LOGTAG ="StPeter02";
     TumbasDataSource mTumbasDataSource;
     private List<Tumbas> tumbas;
 
@@ -30,8 +36,7 @@ public class TumbasListaSimple extends ListActivity {
         mTumbasDataSource.abrir();
 
 
-        //tumbas = mTumbasDataSource.verListadoTumbas();
-        tumbas = mTumbasDataSource.verIdMaximo();
+        tumbas = mTumbasDataSource.verListadoTumbas();
 
 
 
@@ -56,6 +61,20 @@ public class TumbasListaSimple extends ListActivity {
         mTumbasDataSource.cerrar();
     }
 
+    @Override
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+        super.onListItemClick(l, v, position, id);
+
+       visualizar(id);
+    }
+
+    private void visualizar(long id){
+        Intent i = new Intent(TumbasListaSimple.this, VerTumbas.class);
+        i.putExtra(DbHelper.ColumnasTumbas.ID, id);
+        Log.i(LOGTAG, "Id num al hacer click: " + id );
+
+        startActivity(i);
+    }
 
 }
 

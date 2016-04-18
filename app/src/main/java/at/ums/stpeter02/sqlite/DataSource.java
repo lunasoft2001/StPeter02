@@ -58,6 +58,19 @@ public class DataSource {
         return listaTumbas;
     }
 
+    public Tumbas idMaximo(){
+        db = ayudaDb.getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT Max(_id) As _id, tum_IdGrab, tum_nombre From Tumbas",null);
+        if (c != null){
+            c.moveToFirst();
+        }
+        Tumbas tumba = new Tumbas();
+        db.close();
+        c.close();
+        return  tumba;
+
+    }
+
 
 
 }
