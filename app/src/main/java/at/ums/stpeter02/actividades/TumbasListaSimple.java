@@ -65,16 +65,14 @@ public class TumbasListaSimple extends ListActivity {
     protected void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
 
-       visualizar(id);
+        Tumbas tumba = tumbas.get(position);
+        Intent intent = new Intent(this, VerTumbas.class);
+
+        intent.putExtra(".modelo", tumba);
+
+       startActivity(intent);
     }
 
-    private void visualizar(long id){
-        Intent i = new Intent(TumbasListaSimple.this, VerTumbas.class);
-        i.putExtra(DbHelper.ColumnasTumbas.ID, id);
-        Log.i(LOGTAG, "Id num al hacer click: " + id );
-
-        startActivity(i);
-    }
 
 }
 

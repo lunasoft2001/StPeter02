@@ -17,8 +17,9 @@ public class VerTumbas extends AppCompatActivity {
 
     public static final String LOGTAG ="StPeter02";
     TumbasDataSource mTumbasDataSource;
-    private Cursor cursor;
     private long idRegistro;
+    Tumbas tumbas;
+
 
     //variables para obtener los valores de los campos
     private EditText id;
@@ -34,35 +35,16 @@ public class VerTumbas extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tumbas_formulario);
 
-        Intent intent = getIntent();
-        Bundle extra = intent.getExtras();
+        Bundle bun = getIntent().getExtras();
+        tumbas = bun.getParcelable(".modelo");
 
-        if (extra == null) return;
+        refrescarPantalla();
 
-        // Asociamos los elementos de la vista a las variables
-        id = (EditText) findViewById(R.id.etIdTumba);
-        cod_tumba = (EditText) findViewById(R.id.etCodTumbaOli);
-        nombre = (EditText) findViewById(R.id.etNombreTumbaOli);
-        cementerio = (EditText) findViewById(R.id.etCementerioOli);
-        campo = (EditText) findViewById(R.id.etCampoOli);
-        fila = (EditText) findViewById(R.id.etFilaOli);
-        numero = (EditText) findViewById(R.id.etNumeroOli);
 
         //Codigo para el onClicklistener
         findViewById(R.id.boton_cancelarOli).setOnClickListener(mGlobal_onClickListener);
         findViewById(R.id.boton_guardarOli).setOnClickListener(mGlobal_onClickListener);
 
-
-
-        //Codigo para iniciar la Db
-        mTumbasDataSource = new TumbasDataSource(this);
-        mTumbasDataSource.abrir();
-        if (extra.containsKey(DbHelper.ColumnasTumbas.ID)){
-            idRegistro = extra.getLong(DbHelper.ColumnasTumbas.ID);
-
-            Log.i(LOGTAG, "Id num: " + idRegistro );
-            consultar(idRegistro);
-        }
 
 
     }
@@ -112,10 +94,23 @@ public class VerTumbas extends AppCompatActivity {
         Log.i(LOGTAG,"El valor del ID es " + tumba.getID());
     }
 
+    private void refrescarPantalla(){
+        // Asociamos los elementos de la vista a las variables
+        id = (EditText) findViewById(R.id.etIdTumba);
+        cod_tumba = (EditText) findViewById(R.id.etCodTumbaOli);
+        nombre = (EditText) findViewById(R.id.etNombreTumbaOli);
+        cementerio = (EditText) findViewById(R.id.etCementerioOli);
+        campo = (EditText) findViewById(R.id.etCampoOli);
+        fila = (EditText) findViewById(R.id.etFilaOli);
+        numero = (EditText) findViewById(R.id.etNumeroOli);
 
-    private void consultar(long id){
-        cursor = mTumbasDataSource.recuperarRegistro(id);
-        nombre.setText(cursor.getString(cursor.getColumnIndex(DbHelper.ColumnasTumbas.NOMBRE)));
+        //id.setText(tumbas.getID());
+        cod_tumba.setText(tumbas.getCOD_TUMBA());
+        nombre.setText(tumbas.getNOMBRE());
+        cementerio.setText(tumbas.getCEMENTERIO());
+        campo.setText(tumbas.getCAMPO());
+        fila.setText(tumbas.getFILA());
+        numero.setText(tumbas.getNUMERO());
 
     }
 
